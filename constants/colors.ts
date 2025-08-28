@@ -1,0 +1,20 @@
+export default {
+  light: {
+    primary: "#3B82F6",
+    secondary: "#10B981",
+    accent: "#8B5CF6",
+    success: "#10B981",
+    warning: "#F59E0B",
+    error: "#EF4444",
+    text: "#1F2937",
+    textSecondary: "#6B7280",
+    background: "#FFFFFF",
+    backgroundSecondary: "#F9FAFB",
+    surface: "#F9FAFB",
+    border: "#E5E7EB",
+    cardBackground: "#FFFFFF",
+    aiIndicator: "#8B5CF6",
+    humanIndicator: "#10B981",
+    mixedIndicator: "#F59E0B",
+  },
+};

@@ -1,0 +1,67 @@
+{
+  "expo": {
+    "name": "ai_check_version10_work",
+    "slug": "ai-check-l4h94bol-cgcjf7br-db5tunxi-m5nndfh6-hnasqnkc-mcokodty-vrlwwox3-25va4i8z-dnq4rt09-kji5y6e0-ns0wo1d3",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "app.rork.ai-check-l4h94bol-cgcjf7br-db5tunxi-m5nndfh6-hnasqnkc-mcokodty-vrlwwox3-25va4i8z-dnq4rt09-kji5y6e0-ns0wo1d3",
+      "usesIcloudStorage": true,
+      "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true,
+        "CFBundleLocalizations": [
+          "fr"
+        ]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "app.rork.ai-check-l4h94bol-cgcjf7br-db5tunxi-m5nndfh6-hnasqnkc-mcokodty-vrlwwox3-25va4i8z-dnq4rt09-kji5y6e0-ns0wo1d3",
+      "permissions": [
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "INTERNET"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://rork.com/"
+        }
+      ],
+      [
+        "expo-document-picker",
+        {
+          "iCloudContainerEnvironment": "Production"
+        }
+      ],
+      [
+        "@stripe/stripe-react-native",
+        {
+          "merchantIdentifier": "string | string[]",
+          "enableGooglePay": "boolean"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users collection - users can only read/write their own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Validate required fields for user creation
+      allow create: if request.auth != null && 
+                   request.auth.uid == userId &&
+                   request.resource.data.keys().hasAll(['name', 'email', 'role', 'usageCount', 'usageLimit', 'createdAt']);
+      
+      // Allow updates to user data (usage tracking, subscription changes)
+      allow update: if request.auth != null && 
+                   request.auth.uid == userId;
+    }
+    
+    // Analyses collection - users can only access their own analyses
+    match /analyses/{analysisId} {
+      // Users can only read their own analyses - STRICT: must have userId field
+      allow read: if request.auth != null && 
+                     resource.data.keys().hasAll(['userId']) &&
+                     request.auth.uid == resource.data.userId;
+      
+      // Users can only create analyses for themselves - STRICT: must include userId
+      allow create: if request.auth != null && 
+                   request.auth.uid == request.resource.data.userId &&
+                   request.resource.data.keys().hasAll(['userId', 'text', 'classification', 'confidenceScore', 'createdAt']);
+      
+      // Users can update their own analyses (if needed) - STRICT: must have userId field
+      allow update: if request.auth != null && 
+                   resource.data.keys().hasAll(['userId']) &&
+                   request.auth.uid == resource.data.userId;
+      
+      // Users can delete their own analyses (if needed) - STRICT: must have userId field
+      allow delete: if request.auth != null && 
+                   resource.data.keys().hasAll(['userId']) &&
+                   request.auth.uid == resource.data.userId;
+    }
+    
+    // Deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
